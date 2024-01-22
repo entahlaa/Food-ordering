@@ -9,41 +9,40 @@
     <base href="/public">
 
     <!-- Required meta tags -->
-    @include("admin.admincss");
+    @include("admin.admincss")
   </head>
   <body>
   <div class="container-scroller">
   @include("admin.navbar")
 
   <div style="position: relative; top: 60px; right: -150px;">
-    <form action="{{url('/update',$data->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('/update',$data->id)}}" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
 
         @csrf
 
-        <div>
-            <label>Title</label>
-            <input style="color:blue" type="text" name="title" value="{{$data->title}}" required>
+        <div style="margin-bottom: 10px; text-align: center;">
+            <label style="display: inline-block; width: 100px; margin-bottom: 5px;">Title</label>
+            <input style="width: 100%; padding: 8px; box-sizing: border-box;color:black;" type="text" name="title" value="{{$data->title}}" required>
         </div>
-        <div>
-            <label>Price</label>
-            <input style="color:blue" type="number" name="price" value="{{$data->price}}" required>
+        <div style="margin-bottom: 10px; text-align: center;">
+            <label style="display: inline-block; width: 100px; margin-bottom: 5px;">Price</label>
+            <input style="width: 100%; padding: 8px; box-sizing: border-box;color:black;" type="number" name="price" value="{{$data->price}}" required>
         </div>
         
-        <div>
-            <label>Description</label>
-            <input style="color:blue" type="text" name="description" value="{{$data->description}}" required>
+        <div style="margin-bottom: 10px; text-align: center;">
+            <label style="display: inline-block; width: 100px; margin-bottom: 5px;">Description</label>
+            <input style="width: 100%; padding: 8px; box-sizing: border-box;color:black;" type="text" name="description" value="{{$data->description}}" required>
         </div>
-        <div>
-            <label>Old Image</label>
+        <div style="margin-bottom: 10px; text-align: center;">
+            <label style="display: inline-block; width: 100px; margin-bottom: 5px;">Old Image</label>
             <img height="200" width="200" src="/foodimage/{{$data->image}}">
         </div>
-        <div>
-            <label>New Image</label>
-            <input  type="file" name="image" placeholder="Image" required>
+        <div style="margin-bottom: 10px; text-align: center;">
+            <label style="display: inline-block; width: 100px; margin-bottom: 5px;">New Image</label>
+            <input type="file" name="image" placeholder="Image" required style="width: 100%; padding: 8px; box-sizing: border-box;position: relative; left: 120px;">
         </div>
-        <div>
-            
-            <input style="color:white" type="submit" value="Save">
+        <div style="margin-bottom: 10px; text-align: center;">
+        <input class="btn btn-success" style="background-color:#228B22;" type="submit" value="Save" onmouseout="this.style.backgroundColor='#228B22'" onmouseover="this.style.backgroundColor='green'">
         </div>
     </form>
 

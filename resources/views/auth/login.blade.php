@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <a href="{{ route('home') }}" class="logo">
+                <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+            </a>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -39,6 +41,11 @@
                     </a>
                 @endif
 
+                <x-button class="ms-4">
+                    <a href="{{ route('register') }}" formnovalidate>
+                    {{ __('Register') }}
+                    </a>
+                </x-button>
                 <x-button class="ms-4">
                     {{ __('Log in') }}
                 </x-button>

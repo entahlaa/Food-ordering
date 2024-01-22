@@ -67,8 +67,7 @@ class HomeController extends Controller
     }
     public function remove ($id)
     {
-        $data=cart::find($id);
-        $data-> delete();
+        $data=cart::where('food_id',$id)->join('food','carts.food_id','=','food.id')->delete();
         return redirect()->back();
     }
     public function orderconfirm (Request $request)

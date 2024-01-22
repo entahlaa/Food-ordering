@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <title>Klassy Cafe - Restaurant HTML Template</title>
+    <title>OmNom's Cafe</title>
 <!--
     
 TemplateMo 558 Klassy Cafe
@@ -59,31 +59,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-                           	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+                            <li class="scroll-to-section"><a href="/redirects" class="active">Home</a></li> 
                             
                             @auth    
                             <li><a href="{{url('/showcart',Auth::user()->id)}}">
@@ -138,38 +114,31 @@ https://templatemo.com/tm-558-klassy-cafe
     @csrf
             @foreach ($data as $data)
             <tr align="center">
-                <td style="padding-bottom:10px;"><input type="text" name="foodname[]" value="{{$data->title}}" hidden="">{{$data->title}}</td>
-                <td style="padding-bottom:10px;"><input type="text" name="price[]" value="{{$data->price}}" hidden="">{{$data->price}}</td>
-                <td style="padding-bottom:10px;"><input type="text" name="quantity[]" value="{{$data->quantity}}" hidden="">{{$data->quantity}}</td>
+                <td style="padding:10px;"><input type="text" name="foodname[]" value="{{$data->title}}" hidden="">{{$data->title}}</td>
+                <td style="padding:10px;"><input type="text" name="price[]" value="{{$data->price}}" hidden="">{{$data->price}}</td>
+                <td style="padding:10px;"><input type="text" name="quantity[]" value="{{$data->quantity}}" hidden="">{{$data->quantity}}</td>
+            <td style="padding:4px;"><a href="{{url('/remove',$data->id)}}" class="btn btn-warning">Remove</a></td>
             </tr>
             @endforeach
-
-            @foreach ($data2 as $data2)
-            <tr style="position: relative; top: -75px; right: -380px;">
-            <td><a href="{{url('/remove',$data2->id)}}" class="btn btn-warning">Remove</a></td>
-            </tr>
-
-            @endforeach
-
-             <tr></tr>
 
         </table>
 
         <div id="appear" align="center" style="padding: 10px;">
             <div style="padding: 10px;">
                 <label>Name</label>
-                <input type="text"name="name" placeholder="Name">
+                <input type="text"name="name" placeholder="Name" id="name">
             </div>
             <div style="padding: 10px;">
                 <label>Phone</label>
-                <input type="number"name="phone" placeholder="Phone Number">
+                <input type="number"name="phone" placeholder="Phone Number" id="phone">
             </div>
             <div style="padding: 10px;">
                 <label>Address</label>
-                <input type="text"name="address" placeholder="Address">
+                <input type="text"name="address" placeholder="Address" id="address">
             </div>
             <div style="padding: 10px;">
-                <input class="btn btn-success" type="submit" value="Order Confirm">
+            <input class="btn btn-danger" style="background-color:#C41E3A;" onmouseout="this.style.backgroundColor='#AA4A44'" onmouseover="this.style.backgroundColor='red'" type="reset" id="reset" value="Order Cancel">
+            <input class="btn btn-success" style="background-color:#228B22;" onmouseout="this.style.backgroundColor='#228B22'" onmouseover="this.style.backgroundColor='green'" id="success" type="submit" value="Order Confirm" onclick="showOrderReceivedMessage()">
             </div>
         </div>
     </form>
@@ -212,6 +181,10 @@ https://templatemo.com/tm-558-klassy-cafe
                 
             });
         });
+
+        function showOrderReceivedMessage() {
+            alert("Order Received!");
+        }
 
     </script>
   </body>
